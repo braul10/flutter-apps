@@ -50,13 +50,10 @@ class _PlayerState extends State<Player> with SingleTickerProviderStateMixin {
     try {
       await _player.setUrl(widget.radioStation.url);
       _player.play();
-      setState(() {
-        state = PlayerState.PLAYING;
-      });
-    } catch (_) {
-      setState(() {
-        state = PlayerState.ERROR;
-      });
+      setState(() => state = PlayerState.PLAYING);
+    } catch (e) {
+      if (e.toString() == '(0) Source error')
+        setState(() => state = PlayerState.ERROR);
     }
   }
 
@@ -81,53 +78,39 @@ class _PlayerState extends State<Player> with SingleTickerProviderStateMixin {
 
   void pause() {
     _player.pause();
-    setState(() {
-      state = PlayerState.PAUSED;
-    });
+    setState(() => state = PlayerState.PAUSED);
   }
 
   void play() {
     _player.play();
-    setState(() {
-      state = PlayerState.PLAYING;
-    });
+    setState(() => state = PlayerState.PLAYING);
   }
 
   void previousStation() async {
     try {
-      setState(() {
-        state = PlayerState.LOADING;
-      });
+      setState(() => state = PlayerState.LOADING);
       currentStation = widget.previous(currentStation);
       await _player.stop();
       await _player.setUrl(currentStation.url);
       _player.play();
-      setState(() {
-        state = PlayerState.PLAYING;
-      });
-    } catch (_) {
-      setState(() {
-        state = PlayerState.ERROR;
-      });
+      setState(() => state = PlayerState.PLAYING);
+    } catch (e) {
+      if (e.toString() == '(0) Source error')
+        setState(() => state = PlayerState.ERROR);
     }
   }
 
   void nextStation() async {
     try {
-      setState(() {
-        state = PlayerState.LOADING;
-      });
+      setState(() => state = PlayerState.LOADING);
       currentStation = widget.next(currentStation);
       await _player.stop();
       await _player.setUrl(currentStation.url);
       _player.play();
-      setState(() {
-        state = PlayerState.PLAYING;
-      });
-    } catch (_) {
-      setState(() {
-        state = PlayerState.ERROR;
-      });
+      setState(() => state = PlayerState.PLAYING);
+    } catch (e) {
+      if (e.toString() == '(0) Source error')
+        setState(() => state = PlayerState.ERROR);
     }
   }
 
