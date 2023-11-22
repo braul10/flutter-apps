@@ -14,8 +14,9 @@ class RadioRepository {
       'https://nl1.api.radio-browser.info',
       'https://de1.api.radio-browser.info',
     ];
+    domains.shuffle();
     String uri =
-        '${domains[Random().nextInt(3)]}/json/stations/bycountrycodeexact/$country';
+        '${domains.first}/json/stations/bycountrycodeexact/$country';
     Response response = await get(Uri.parse(uri));
     if (response.statusCode != 200) return [];
 

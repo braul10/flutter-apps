@@ -66,13 +66,13 @@ class _PlayerState extends State<Player> with SingleTickerProviderStateMixin {
   String getState() {
     switch (state) {
       case PlayerState.LOADING:
-        return 'Loading...';
+        return 'Cargando...';
       case PlayerState.PLAYING:
-        return 'Playing';
+        return 'Reproduciendo';
       case PlayerState.PAUSED:
-        return 'Paused';
+        return 'Pausado';
       default:
-        return 'Station unavailable';
+        return 'No disponible';
     }
   }
 
@@ -187,7 +187,11 @@ class _PlayerState extends State<Player> with SingleTickerProviderStateMixin {
                 overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.robotoMono(
                   fontSize: 15,
-                  color: state == PlayerState.ERROR ? Colors.red : Colors.white,
+                  color: state == PlayerState.ERROR
+                      ? Colors.red
+                      : state == PlayerState.PLAYING
+                          ? Colors.green
+                          : Colors.white,
                 ),
               ),
               SizedBox(height: 20),
