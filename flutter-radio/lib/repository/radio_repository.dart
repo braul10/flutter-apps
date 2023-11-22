@@ -1,27 +1,21 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:radio_braulio/models/models.dart';
 import 'package:http/http.dart';
-
-// 'https://at1.api.radio-browser.info'
-// 'https://nl1.api.radio-browser.info'
-// 'https://de1.api.radio-browser.info'
+import 'package:radio_braulio/models/radio_station.dart';
 
 class RadioRepository {
-  Future<int> getStatus() async {
-    String uri =
-        'https://at1.api.radio-browser.info/json/stations/bycountrycodeexact/es';
-    Response response = await get(Uri.parse(uri));
-    return response.statusCode;
-  }
-
   Future<List<RadioStation>> getStationsList({
     String country = 'es',
     int limit = 100,
   }) async {
+    List<String> domains = [
+      'https://at1.api.radio-browser.info',
+      'https://nl1.api.radio-browser.info',
+      'https://de1.api.radio-browser.info',
+    ];
     String uri =
-        'https://at1.api.radio-browser.info/json/stations/bycountrycodeexact/$country';
+        '${domains[Random().nextInt(3)]}/json/stations/bycountrycodeexact/$country';
     Response response = await get(Uri.parse(uri));
     if (response.statusCode != 200) return [];
 

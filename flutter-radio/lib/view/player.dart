@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:radio_braulio/models/models.dart';
-import 'package:volume_controller/volume_controller.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:radio_braulio/models/radio_station.dart';
+import 'package:volume_controller/volume_controller.dart';
 
 class Player extends StatefulWidget {
   final RadioStation radioStation;

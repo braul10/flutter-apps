@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:radio_braulio/view/view.dart';
+import 'package:radio_braulio/view/stations_list.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:radio_braulio/models/models.dart';
-import 'package:radio_braulio/provider/providers.dart';
+import 'package:radio_braulio/models/radio_station.dart';
+import 'package:radio_braulio/repository/radio_repository.dart';
 import 'package:radio_braulio/view/player.dart';
-import 'package:radio_braulio/widgets/widgets.dart';
+import 'package:radio_braulio/widgets/loading.dart';
 
 class StationsList extends StatefulWidget {
   @override
