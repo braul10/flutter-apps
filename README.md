@@ -1,1 +1,1 @@
-# flutter-apps
+# My flutter apps collection
